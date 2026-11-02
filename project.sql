@@ -1,0 +1,211 @@
+-- first ,,, import the daata 
+-- creat tables to import data to them
+
+-- create table constituencywise_results("S.No" int,"Parliament Constituency" varchar(100)
+-- ,"Constituency Name" varchar(1000),"Winning Candidate" varchar(1000),
+-- "Total Votes" int,Margin int,"Constituency ID" varchar(500),"Party ID" varchar(500));
+---------------------------------------
+-- create table constituencywise_details("S.N." int, Candidate varchar(1000),Party varchar(1000),"EVM Votes" int,
+-- "Postal Votes" int,"Total Votes" int,"% of Votes" numeric,"Constituency ID" varchar(500));
+----------------------------------------
+-- create table partywise_results(Party varchar(500),Won varchar (500),"Party ID" varchar(100));
+-----------------------------------------------------
+-- create table states("State ID" varchar(500),State varchar(500));
+----------------------------------
+-- create table statewise_results(Constituency varchar(1000),"Const. No."int,"Parliament Constituency"varchar(1000),
+-- "Leading Candidate" varchar (1000),"Trailing Candidate"varchar(1000),Margin int ,Status varchar(500),
+-- "State ID"varchar (500),State varchar(500));
+-- --------------------------------------------
+-- alter table partywise_results 
+-- alter column won type int
+-- using won :: int;
+-----------------
+--SELECT COUNT(DISTINCT "Parliament_Constituency") AS total_seats
+-- FROM constituencywise_results;
+------------------------------------------------------------------
+-- SELECT 
+--     s.state AS state_name,
+--     COUNT(cr."Parliament_Constituency") AS total_seats
+-- FROM constituencywise_results cr
+-- JOIN statewise_results sr ON cr."Parliament_Constituency" = sr."Parliament_Constituency"
+-- JOIN states s ON sr."State_ID" = s."State_ID"
+-- GROUP BY s.state;
+--------------------------------------------------------------
+-- SELECT 
+--     SUM(won) AS nda_total_seats
+-- FROM partywise_results
+-- WHERE 
+--     party IN (
+--         'Bharatiya Janata Party - BJP',
+--         'Telugu Desam - TDP',
+--         'Janata Dal (United) - JD(U)',
+--         'Shiv Sena - SHS',
+--         'AJSU Party - AJSUP',
+--         'Apna Dal (Soneylal) - ADAL',
+--         'Asom Gana Parishad - AGP',
+--         'Hindustani Awam Morcha (Secular) - HAMS',
+--         'Janasena Party - JnP',
+--         'Janata Dal (Secular) - JD(S)',
+--         'Lok Janshakti Party(Ram Vilas) - LJPRV',
+--         'Nationalist Congress Party - NCP',
+--         'Rashtriya Lok Dal - RLD',
+--         'Sikkim Krantikari Morcha - SKM'
+--     );
+---------------------------------------------------------
+-- SELECT 
+--     SUM(CASE 
+--         WHEN party IN (
+--             'Bharatiya Janata Party - BJP',
+--             'Telugu Desam - TDP',
+--             'Janata Dal (United) - JD(U)',
+--             'Shiv Sena - SHS',
+--             'AJSU Party - AJSUP',
+--             'Apna Dal (Soneylal) - ADAL',
+--             'Asom Gana Parishad - AGP',
+--             'Hindustani Awam Morcha (Secular) - HAMS',
+--             'Janasena Party - JnP',
+--             'Janata Dal (Secular) - JD(S)',
+--             'Lok Janshakti Party(Ram Vilas) - LJPRV',
+--             'Nationalist Congress Party - NCP',
+--             'Rashtriya Lok Dal - RLD',
+--             'Sikkim Krantikari Morcha - SKM'
+--         ) THEN "won"
+--         ELSE 0
+--     END) AS NDA_Total_Seats_Won
+-- FROM partywise_results;
+-------------------------------------------------------
+-- SELECT 
+--     SUM(CASE 
+--         WHEN party IN (
+--             'Bharatiya Janata Party - BJP',
+--             'Telugu Desam - TDP',
+--             'Janata Dal (United) - JD(U)',
+--             'Shiv Sena - SHS',
+--             'AJSU Party - AJSUP',
+--             'Apna Dal (Soneylal) - ADAL',
+--             'Asom Gana Parishad - AGP',
+--             'Hindustani Awam Morcha (Secular) - HAMS',
+--             'Janasena Party - JnP',
+--             'Janata Dal (Secular) - JD(S)',
+--             'Lok Janshakti Party(Ram Vilas) - LJPRV',
+--             'Nationalist Congress Party - NCP',
+--             'Rashtriya Lok Dal - RLD',
+--             'Sikkim Krantikari Morcha - SKM'
+--         ) THEN "won"
+--         ELSE 0
+--     END) AS NDA_Total_Seats_Won
+-- FROM partywise_results;
+-----------------------------------------------------------
+-- SELECT 
+--     SUM(CASE 
+--         WHEN party IN (
+--             'Bharatiya Janata Party - BJP',
+--             'Telugu Desam - TDP',
+--             'Janata Dal (United) - JD(U)',
+--             'Shiv Sena - SHS',
+--             'AJSU Party - AJSUP',
+--             'Apna Dal (Soneylal) - ADAL',
+--             'Asom Gana Parishad - AGP',
+--             'Hindustani Awam Morcha (Secular) - HAMS',
+--             'Janasena Party - JnP',
+--             'Janata Dal (Secular) - JD(S)',
+--             'Lok Janshakti Party(Ram Vilas) - LJPRV',
+--             'Nationalist Congress Party - NCP',
+--             'Rashtriya Lok Dal - RLD',
+--             'Sikkim Krantikari Morcha - SKM'
+--         ) THEN "won"
+--         ELSE 0
+--     END) AS NDA_Total_Seats_Won
+-- FROM partywise_results;
+-------------------------------------------------------------------------
+-- SELECT 
+--     party AS Party_Name,
+--     won AS Seats_Won
+-- FROM partywise_results
+-- WHERE 
+--     party IN (
+--         'Indian National Congress - INC',
+--         'Aam Aadmi Party - AAAP',
+--         'All India Trinamool Congress - AITC',
+--         'Bharat Adivasi Party - BHRTADVSIP',
+--         'Communist Party of India (Marxist) - CPI(M)',
+--         'Communist Party of India (Marxist-Leninist) (Liberation) - CPI(ML)(L)',
+--         'Communist Party of India - CPI',
+--         'Dravida Munnetra Kazhagam - DMK',
+--         'Indian Union Muslim League - IUML',
+--         'Nat`Jammu & Kashmir National Conference - JKN',
+--         'Jharkhand Mukti Morcha - JMM',
+--         'Jammu & Kashmir National Conference - JKN',
+--         'Kerala Congress - KEC',
+--         'Marumalarchi Dravida Munnetra Kazhagam - MDMK',
+--         'Nationalist Congress Party Sharadchandra Pawar - NCPSP',
+--         'Rashtriya Janata Dal - RJD',
+--         'Rashtriya Loktantrik Party - RLTP',
+--         'Revolutionary Socialist Party - RSP',
+--         'Samajwadi Party - SP',
+--         'Shiv Sena (Uddhav Balasaheb Thackeray) - SHSUBT',
+--         'Viduthalai Chiruthaigal Katchi - VCK'
+--     )
+-- -- ORDER BY Seats_Won DESC
+------------------------------------------------------------------------------------
+-- ELECT 
+--     p.party_alliance,
+--     COUNT(cr."Constituency_ID") AS Seats_Won
+-- FROM constituencywise_results cr
+-- JOIN partywise_results p ON cr."Party_ID" = p."Party_ID"
+-- WHERE 
+--     p.party_alliance IN ('NDA', 'I.N.D.I.A', 'OTHER')
+-- GROUP BY 
+--     p.party_alliance
+-- ORDER BY 
+--     Seats_Won DESC;
+-- ---------------------------------------------------------------------------------------------
+-- SELECT 
+--     cr."Winning_Candidate", 
+--     p.Party, 
+--     p.party_alliance, 
+--     cr."Total_Votes", 
+--     cr.Margin, 
+--     cr."Constituency_Name", 
+--     s.State
+-- FROM constituencywise_results cr
+-- JOIN partywise_results p ON cr."Party_ID" = p."Party_ID"
+-- JOIN statewise_results sr ON cr."Parliament_Constituency" = sr."Parliament_Constituency"
+-- JOIN states s ON sr."State_ID" = s."State_ID"
+-- WHERE s.State = 'Uttar Pradesh' AND cr."Constituency_Name" = 'AMETHI';
+-----------------------------------------------------------------------------------------------------
+-- SELECT 
+--     cd.Candidate,
+--     cd.Party,
+--     cd."EVM_Votes",
+--     cd."Postal_Votes",
+--     cd."Total_Votes",
+--     cr."Constituency_Name"
+-- FROM constituencywise_details cd
+-- JOIN constituencywise_results cr ON cd."Constituency_ID" = cr."Constituency_ID"
+-- WHERE UPPER(cr."Constituency_Name") = 'MATHURA'
+-- ORDER BY cd."Total_Votes" DESC;
+--------------------------------------------------------------------------------------------------
+-- SELECT 
+--     p.Party,
+--     COUNT(cr."Constituency_ID") AS Seats_Won
+-- FROM constituencywise_results cr
+-- JOIN partywise_results p ON cr."Party_ID" = p."Party_ID"
+-- JOIN statewise_results sr ON cr."Parliament_Constituency" = sr."Parliament_Constituency"
+-- JOIN states s ON sr."State_ID" = s."State_ID"
+-- WHERE s.state = 'Andhra Pradesh'
+-- GROUP BY p.Party
+-- ORDER BY Seats_Won DESC;
+-----------------------------------------------------------------------------------------------
+-- SELECT 
+--     s.State AS State_Name,
+--     SUM(CASE WHEN p.party_alliance = 'NDA' THEN 1 ELSE 0 END) AS NDA_Seats_Won,
+--     SUM(CASE WHEN p.party_alliance = 'I.N.D.I.A' THEN 1 ELSE 0 END) AS INDIA_Seats_Won,
+--     SUM(CASE WHEN p.party_alliance = 'OTHER' THEN 1 ELSE 0 END) AS OTHER_Seats_Won
+-- FROM constituencywise_results cr
+-- JOIN partywise_results p ON cr."Party_ID" = p."Party_ID"
+-- JOIN statewise_results sr ON cr."Parliament_Constituency" = sr."Parliament_Constituency"
+-- JOIN states s ON sr."State_ID" = s."State_ID"
+-- WHERE p.party_alliance IN ('NDA', 'I.N.D.I.A', 'OTHER')
+-- GROUP BY s.State
+-- ORDER BY s.State;
